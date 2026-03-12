@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 
 export default function SEOHead({ title, description, keywords, image, url }) {
   const siteName = 'خبراء الخزائن'
-  const defaultImg = 'https://www.khubara-khazaen.com/assets/images/og-image.jpg'
+  const defaultImg = 'https://www.khubara-khazaen.com/assets/images/og-image.svg'
   const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | خزائن حديد وخزنات فاخرة`
 
   return (
