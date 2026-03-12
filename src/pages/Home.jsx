@@ -148,7 +148,7 @@ function HeroSection() {
 
       {/* ✅ fade سفلي إلى لون الخلفية الحقيقي (#f8f7f4) لا أبيض */}
       <div className="absolute bottom-0 left-0 right-0 h-32
-        bg-gradient-to-t from-[#f8f7f4] via-[#f8f7f4]/60 to-transparent z-10" />
+        bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent z-10" />
 
       {/* Scroll indicator */}
       <motion.div

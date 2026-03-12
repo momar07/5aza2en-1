@@ -1,43 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&family=Amiri:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ══ Base ══ */
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background: #0f172a;
 }
 
 body {
   font-family: 'Cairo', 'Tajawal', sans-serif;
   direction: rtl;
-  /* خلفية موحدة تمنع الوميض الأبيض عند أول تحميل */
-  background-color: #f8f7f4;
+  background-color: #0f172a;
   color: #1e293b;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
-/* منع أي وميض أبيض أثناء التحميل */
 #root {
-  background-color: #f8f7f4;
+  background-color: #0f172a;
   min-height: 100vh;
 }
 
-/* ══ Scrollbar ══ */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-track { background: #1e293b; }
 ::-webkit-scrollbar-thumb { background: #b8962e; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #d4a832; }
 
-/* ══ Selection ══ */
-::selection { background: rgba(184,150,46,0.25); color: #92700a; }
+::selection { background: rgba(184,150,46,0.25); color: #f0d060; }
 
-/* ══ Gold text gradient ══ */
 .gold-text {
   background: linear-gradient(135deg, #b8962e 0%, #d4a832 50%, #b8962e 100%);
   -webkit-background-clip: text;
@@ -45,7 +42,6 @@ body {
   background-clip: text;
 }
 
-/* ══ Gold shimmer button ══ */
 .btn-gold {
   @apply relative overflow-hidden inline-flex items-center justify-center gap-2
          px-6 py-3 rounded-lg font-bold transition-all duration-300;
@@ -59,7 +55,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* ══ Glass card (للداشبورد فقط) ══ */
 .glass-card {
   background: rgba(255,255,255,0.04);
   backdrop-filter: blur(12px);
@@ -68,7 +63,6 @@ body {
   border-radius: 1rem;
 }
 
-/* ══ Light card (للصفحات العامة) ══ */
 .light-card {
   background: #ffffff;
   border: 1px solid #f0e8d0;
@@ -82,32 +76,13 @@ body {
   transform: translateY(-2px);
 }
 
-/* ══ Section padding ══ */
 .section-pad { @apply py-16 md:py-24 px-4 md:px-8 lg:px-16; }
 
-/* ══ Shimmer loading ══ */
-.shimmer {
-  background: linear-gradient(90deg,
-    rgba(255,255,255,0.5) 0%,
-    rgba(184,150,46,0.15) 50%,
-    rgba(255,255,255,0.5) 100%);
-  background-size: 1000px 100%;
-  animation: shimmer 2.5s linear infinite;
-}
-
-/* ══ Prose custom (blog content) ══ */
 .prose-custom h2 { @apply text-xl font-bold text-slate-800 mt-6 mb-3; }
 .prose-custom p  { @apply text-slate-600 leading-relaxed mb-3; }
 .prose-custom ul { @apply list-disc list-inside text-slate-600 mb-3 space-y-1; }
 .prose-custom a  { @apply text-amber-700 hover:text-amber-600 underline; }
 
-/* ══ Page transition ══ */
-.page-enter { opacity: 0; transform: translateY(20px); }
-.page-enter-active { opacity: 1; transform: translateY(0); transition: all 0.4s ease; }
-.page-exit { opacity: 1; }
-.page-exit-active { opacity: 0; transition: opacity 0.3s ease; }
-
-/* ══ Responsive typography ══ */
 h1 { @apply text-3xl md:text-5xl lg:text-6xl font-bold; }
 h2 { @apply text-2xl md:text-4xl font-bold; }
 h3 { @apply text-xl md:text-2xl font-semibold; }
