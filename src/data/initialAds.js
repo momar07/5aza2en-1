@@ -1,0 +1,53 @@
+export const initialAds = [
+  {
+    id: 1,
+    title: "قياس وتصميم مجاني",
+    subtitle: "نزور منزلك ونقيس ونصمم خزانتك مجاناً بالكامل",
+    description: "فريقنا المتخصص يزور منزلك ويأخذ القياسات الدقيقة ويقدم لك تصميماً ثلاثي الأبعاد مجانياً وبدون أي التزام. اتصل بنا الآن!",
+    discount: null,
+    discountText: "مجاناً",
+    validUntil: "2025-12-31",
+    colorClass: "from-amber-600 to-amber-800",
+    textColor: "text-white",
+    image: "/assets/images/ad-free-measurement.jpg",
+    ctaText: "احجز قياسك المجاني",
+    ctaLink: "https://wa.me/966503167122?text=أريد حجز موعد قياس وتصميم مجاني",
+    isActive: true,
+    badge: "عرض دائم",
+    createdAt: "2024-01-01T00:00:00.000Z"
+  },
+  {
+    id: 2,
+    title: "ضمان 10 سنوات كاملة",
+    subtitle: "ضمان شامل على جميع منتجاتنا لمدة 10 سنوات",
+    description: "نؤمن بجودة منتجاتنا لذلك نقدم ضمان 10 سنوات على الهيكل والتشغيل لجميع خزائننا. راحة بالك مضمونة.",
+    discount: null,
+    discountText: "10 سنوات",
+    validUntil: "2025-12-31",
+    colorClass: "from-slate-700 to-slate-900",
+    textColor: "text-white",
+    image: "/assets/images/ad-warranty.jpg",
+    ctaText: "اعرف المزيد",
+    ctaLink: "https://wa.me/966503167122?text=أريد معرفة تفاصيل الضمان",
+    isActive: true,
+    badge: "ميزة حصرية",
+    createdAt: "2024-01-02T00:00:00.000Z"
+  },
+  {
+    id: 3,
+    title: "خصم 30% على غرف الملابس",
+    subtitle: "عرض محدود على تصميم وتركيب غرف الملابس الكاملة",
+    description: "احصل على خصم 30% على تصميم وتركيب غرفة ملابسك الكاملة (Walk-in Closet) عند الحجز خلال هذا الشهر. العرض محدود المدة!",
+    discount: 30,
+    discountText: "خصم 30%",
+    validUntil: "2025-06-30",
+    colorClass: "from-amber-700 to-red-800",
+    textColor: "text-white",
+    image: "/assets/images/ad-walkin-offer.jpg",
+    ctaText: "احجز عرضك الآن",
+    ctaLink: "https://wa.me/966503167122?text=أريد الاستفادة من عرض خصم 30% على غرف الملابس",
+    isActive: true,
+    badge: "عرض محدود",
+    createdAt: "2024-01-03T00:00:00.000Z"
+  }
+];

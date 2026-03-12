@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Allow: /services
+Allow: /products
+Allow: /ads
+Allow: /blog
+Allow: /contact
+
+# منع فهرسة لوحة التحكم
+Disallow: /dashboard/
+Disallow: /dashboard/login
+Disallow: /dashboard/products
+Disallow: /dashboard/ads
+Disallow: /dashboard/blog
+
+# Sitemap
+Sitemap: https://www.theclosetexperts.com/sitemap.xml

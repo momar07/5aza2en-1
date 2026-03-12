@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&family=Amiri:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══ Base ══ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  direction: rtl;
+  background-color: #0d0d0d;
+  color: #f0f0f0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ══ Scrollbar ══ */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-thumb { background: #b8962e; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #f0d060; }
+
+/* ══ Selection ══ */
+::selection { background: rgba(184,150,46,0.3); color: #f0d060; }
+
+/* ══ Gold text gradient ══ */
+.gold-text {
+  background: linear-gradient(135deg, #b8962e 0%, #f0d060 50%, #b8962e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══ Gold shimmer button ══ */
+.btn-gold {
+  @apply relative overflow-hidden inline-flex items-center justify-center gap-2
+         px-6 py-3 rounded-lg font-bold text-dark-900 transition-all duration-300;
+  background: linear-gradient(135deg, #b8962e 0%, #f0d060 50%, #b8962e 100%);
+  background-size: 200% auto;
+}
+.btn-gold:hover {
+  background-position: right center;
+  box-shadow: 0 8px 25px rgba(184,150,46,0.5);
+  transform: translateY(-2px);
+}
+
+/* ══ Glass card ══ */
+.glass-card {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(184,150,46,0.2);
+  border-radius: 1rem;
+}
+
+/* ══ Section padding ══ */
+.section-pad { @apply py-16 md:py-24 px-4 md:px-8 lg:px-16; }
+
+/* ══ Shimmer loading ══ */
+.shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.02) 0%,
+    rgba(184,150,46,0.1)  50%,
+    rgba(255,255,255,0.02) 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ══ Page transition ══ */
+.page-enter { opacity: 0; transform: translateY(20px); }
+.page-enter-active { opacity: 1; transform: translateY(0); transition: all 0.4s ease; }
+.page-exit { opacity: 1; }
+.page-exit-active { opacity: 0; transition: opacity 0.3s ease; }
+
+/* ══ Responsive typography ══ */
+h1 { @apply text-3xl md:text-5xl lg:text-6xl font-bold; }
+h2 { @apply text-2xl md:text-4xl font-bold; }
+h3 { @apply text-xl md:text-2xl font-semibold; }
