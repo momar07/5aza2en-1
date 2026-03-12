@@ -226,9 +226,8 @@ function WhyUsSection() {
 
   return (
     <section className="py-20 bg-[#f8f7f4] relative">
-      {/* fade علوي يربطها بالقسم الداكن قبلها */}
-      <div className="absolute top-0 left-0 right-0 h-16
-        bg-gradient-to-b from-[#1a1410] to-[#f8f7f4] pointer-events-none" />
+      {/* فاصل خفيف بين السيكشنين الفاتحين */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-amber-100 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 relative">
         <SectionTitle
           title="لماذا تختار خبراء الخزائن؟"
@@ -270,11 +269,10 @@ function FeaturedProductsSection() {
   if (!featured.length) return null;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#1a1410] via-[#1e1a0e] to-[#0f0d08]
-      relative overflow-hidden">
+    <section className="py-20 bg-[#f8f7f4] relative overflow-hidden">
 
-      {/* خلفية زخرفية */}
-      <div className="absolute inset-0 opacity-5"
+      {/* زخرفة خلفية ذهبية خفيفة */}
+      <div className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `repeating-linear-gradient(
             45deg, #b8962e 0px, #b8962e 1px,
@@ -283,16 +281,16 @@ function FeaturedProductsSection() {
           backgroundSize: "40px 40px"
         }}
       />
-      {/* توهج ذهبي مركزي */}
+      {/* توهج ذهبي مركزي خفيف */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
         w-[600px] h-[600px] rounded-full
-        bg-amber-500/5 blur-3xl pointer-events-none" />
+        bg-amber-400/8 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto px-4">
         <SectionTitle
           title="أبرز منتجاتنا"
           subtitle="اكتشف مجموعتنا المميزة من خزائن الملابس الفاخرة"
-          center light
+          center
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -305,15 +303,15 @@ function FeaturedProductsSection() {
               transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
               whileHover={{ y: -6 }}
               className="group relative overflow-hidden rounded-2xl
-                bg-gradient-to-b from-[#2a2215] to-[#1a1410]
-                border border-amber-800/30
-                hover:border-amber-500/60
-                shadow-lg hover:shadow-amber-900/40
-                transition-all duration-400"
+                bg-white
+                border border-amber-100
+                hover:border-amber-400
+                shadow-sm hover:shadow-xl hover:shadow-amber-100/60
+                transition-all duration-300"
             >
               {/* صورة المنتج أو placeholder */}
               <div className="relative h-56 overflow-hidden
-                bg-gradient-to-br from-[#2e2415] to-[#1a1008]">
+                bg-gradient-to-br from-[#f0ead8] to-[#e8dfc8]">
                 {product.image && !product.image.startsWith("/assets") ? (
                   <img
                     src={product.image}
@@ -325,12 +323,12 @@ function FeaturedProductsSection() {
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center gap-3">
                     <span className="text-7xl opacity-60">🪞</span>
-                    <span className="text-amber-700/60 text-xs font-medium">صورة قريباً</span>
+                    <span className="text-amber-600/80 text-xs font-medium">صورة قريباً</span>
                   </div>
                 )}
                 {/* تدرج سفلي على الصورة */}
                 <div className="absolute inset-x-0 bottom-0 h-16
-                  bg-gradient-to-t from-[#1a1410] to-transparent" />
+                  bg-gradient-to-t from-white/60 to-transparent" />
               </div>
 
               {/* شارة المنتج */}
@@ -345,21 +343,21 @@ function FeaturedProductsSection() {
 
               {/* تفاصيل المنتج */}
               <div className="p-5">
-                <h3 className="text-white font-bold text-lg mb-2 leading-snug">
+                <h3 className="text-slate-800 font-bold text-lg mb-2 leading-snug">
                   {product.name}
                 </h3>
-                <p className="text-amber-200/50 text-sm mb-4 line-clamp-2">
+                <p className="text-slate-500 text-sm mb-4 line-clamp-2">
                   {product.description}
                 </p>
 
                 {/* السعر + زر الاستفسار */}
                 <div className="flex items-center justify-between gap-3">
                   <div>
-                    <span className="text-amber-400 font-black text-base">
+                    <span className="text-amber-600 font-black text-base">
                       {product.priceNote || product.price}
                     </span>
                     {product.priceNote && (
-                      <p className="text-amber-700/60 text-xs mt-0.5">{product.price}</p>
+                      <p className="text-slate-400 text-xs mt-0.5">{product.price}</p>
                     )}
                   </div>
                   <a
@@ -379,7 +377,7 @@ function FeaturedProductsSection() {
                 {/* مزايا سريعة */}
                 {product.features?.slice(0, 2).map((feat, fi) => (
                   <div key={fi}
-                    className="flex items-center gap-2 mt-2 text-xs text-amber-300/60">
+                    className="flex items-center gap-2 mt-2 text-xs text-slate-400">
                     <div className="w-1 h-1 rounded-full bg-amber-500 shrink-0" />
                     <span className="line-clamp-1">{feat}</span>
                   </div>

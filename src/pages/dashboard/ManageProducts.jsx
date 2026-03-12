@@ -7,7 +7,7 @@ import { useData } from '@/context/DataContext'
 const emptyForm = {
   name: '', category: '', price: '', description: '',
   features: '', badge: '', inStock: true,
-  image: '',
+  image: '', featured: false,
 }
 
 const categories = [
@@ -141,9 +141,14 @@ export default function ManageProducts() {
                       </span>
                     </td>
                     <td className="px-5 py-4">
-                      {prod.badge
-                        ? <span className="text-xs bg-gold-gradient text-dark-900 px-2 py-0.5 rounded-full font-bold">{prod.badge}</span>
-                        : <span className="text-gray-600 text-xs">—</span>}
+                      <div className="flex flex-col gap-1">
+                        {prod.badge
+                          ? <span className="text-xs bg-gold-gradient text-dark-900 px-2 py-0.5 rounded-full font-bold">{prod.badge}</span>
+                          : <span className="text-gray-600 text-xs">—</span>}
+                        {prod.featured && (
+                          <span className="text-xs text-amber-400">⭐ رئيسية</span>
+                        )}
+                      </div>
                     </td>
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-2">
@@ -233,11 +238,19 @@ export default function ManageProducts() {
                                text-white placeholder-gray-600 focus:outline-none focus:border-gold-500 transition-colors"/>
                 </div>
 
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-gold-700/10">
-                  <input type="checkbox" id="inStock" name="inStock"
-                    checked={form.inStock} onChange={handleChange}
-                    className="w-5 h-5 accent-yellow-500 cursor-pointer"/>
-                  <label htmlFor="inStock" className="text-white font-medium cursor-pointer">متوفر في المخزون</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-gold-700/10">
+                    <input type="checkbox" id="inStock" name="inStock"
+                      checked={form.inStock} onChange={handleChange}
+                      className="w-5 h-5 accent-yellow-500 cursor-pointer"/>
+                    <label htmlFor="inStock" className="text-white font-medium cursor-pointer">متوفر في المخزون</label>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-gold-700/10">
+                    <input type="checkbox" id="featured" name="featured"
+                      checked={form.featured || false} onChange={handleChange}
+                      className="w-5 h-5 accent-yellow-500 cursor-pointer"/>
+                    <label htmlFor="featured" className="text-white font-medium cursor-pointer">⭐ ظهور في الصفحة الرئيسية</label>
+                  </div>
                 </div>
 
                 <div className="flex gap-3 pt-2">

@@ -33,7 +33,7 @@ export default function ManageAds() {
   }
 
   const handleToggleActive = (id, currentState) => {
-    updateAd(id, { active: !currentState })
+    updateAd(id, { active: !currentState, isActive: !currentState })
     toast.success(!currentState ? 'تم تفعيل الإعلان' : 'تم إيقاف الإعلان')
   }
 
@@ -65,7 +65,7 @@ export default function ManageAds() {
           <h1 className="text-2xl font-bold text-white flex items-center gap-3">
             <Megaphone className="text-gold-400" size={26} /> إدارة الإعلانات
           </h1>
-          <p className="text-gray-500 text-sm mt-1">{ads.length} إعلان — {ads.filter(a=>a.active).length} نشط</p>
+          <p className="text-gray-500 text-sm mt-1">{ads.length} إعلان — {ads.filter(a=>(a.isActive||a.active)).length} نشط</p>
         </div>
         <motion.button
           whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
@@ -79,8 +79,8 @@ export default function ManageAds() {
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
         {[
           { label:'إجمالي الإعلانات', value: ads.length,                       color:'from-blue-900/40 to-blue-800/20',  border:'border-blue-700/20'  },
-          { label:'إعلانات نشطة',     value: ads.filter(a=>a.active).length,   color:'from-green-900/40 to-green-800/20', border:'border-green-700/20' },
-          { label:'إعلانات موقوفة',   value: ads.filter(a=>!a.active).length,  color:'from-red-900/40 to-red-800/20',    border:'border-red-700/20'   },
+          { label:'إعلانات نشطة',     value: ads.filter(a=>(a.isActive||a.active)).length,   color:'from-green-900/40 to-green-800/20', border:'border-green-700/20' },
+          { label:'إعلانات موقوفة',   value: ads.filter(a=>!(a.isActive||a.active)).length,  color:'from-red-900/40 to-red-800/20',    border:'border-red-700/20'   },
         ].map(({ label, value, color, border }) => (
           <div key={label} className={`glass-card p-5 bg-gradient-to-br ${color} border ${border}`}>
             <p className="text-3xl font-bold text-white mb-1">{value}</p>
@@ -110,11 +110,11 @@ export default function ManageAds() {
               >
                 {/* Status badge */}
                 <span className={`absolute top-4 left-4 text-xs font-bold px-2.5 py-1 rounded-full ${
-                  ad.active
+                  (ad.isActive || ad.active)
                     ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                     : 'bg-red-500/20 text-red-400 border border-red-500/30'
                 }`}>
-                  {ad.active ? '● نشط' : '● موقوف'}
+                  {(ad.isActive || ad.active) ? '● نشط' : '● موقوف'}
                 </span>
 
                 <div className="flex items-start justify-between mb-3 ml-20">
@@ -137,15 +137,15 @@ export default function ManageAds() {
 
                 <div className="flex items-center gap-2 pt-3 border-t border-white/10">
                   <button
-                    onClick={() => handleToggleActive(ad.id, ad.active)}
+                    onClick={() => handleToggleActive(ad.id, (ad.isActive || ad.active))}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                      ad.active
+                      (ad.isActive || ad.active)
                         ? 'bg-green-900/30 text-green-400 hover:bg-green-900/50'
                         : 'bg-gray-800 text-gray-400 hover:bg-gray-700'
                     }`}
                   >
-                    {ad.active ? <ToggleRight size={14} /> : <ToggleLeft size={14} />}
-                    {ad.active ? 'إيقاف' : 'تفعيل'}
+                    {(ad.isActive || ad.active) ? <ToggleRight size={14} /> : <ToggleLeft size={14} />}
+                    {(ad.isActive || ad.active) ? 'إيقاف' : 'تفعيل'}
                   </button>
                   <motion.button
                     whileHover={{ scale:1.05 }} whileTap={{ scale:0.95 }}

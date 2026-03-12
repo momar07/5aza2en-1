@@ -53,7 +53,7 @@ export function DataProvider({ children }) {
   const deleteAd = (id) =>
     setAds(prev => prev.filter(a => a.id !== id));
   const toggleAd = (id) =>
-    setAds(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive } : a));
+    setAds(prev => prev.map(a => a.id === id ? { ...a, isActive: !a.isActive, active: !a.isActive } : a));
 
   // ══════════════ BLOGS ════════════════
   const addBlog = (data) => {
