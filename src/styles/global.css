@@ -14,25 +14,32 @@ html {
 body {
   font-family: 'Cairo', 'Tajawal', sans-serif;
   direction: rtl;
-  background-color: #0d0d0d;
-  color: #f0f0f0;
+  /* خلفية موحدة تمنع الوميض الأبيض عند أول تحميل */
+  background-color: #f8f7f4;
+  color: #1e293b;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* منع أي وميض أبيض أثناء التحميل */
+#root {
+  background-color: #f8f7f4;
+  min-height: 100vh;
+}
+
 /* ══ Scrollbar ══ */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
 ::-webkit-scrollbar-thumb { background: #b8962e; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #f0d060; }
+::-webkit-scrollbar-thumb:hover { background: #d4a832; }
 
 /* ══ Selection ══ */
-::selection { background: rgba(184,150,46,0.3); color: #f0d060; }
+::selection { background: rgba(184,150,46,0.25); color: #92700a; }
 
 /* ══ Gold text gradient ══ */
 .gold-text {
-  background: linear-gradient(135deg, #b8962e 0%, #f0d060 50%, #b8962e 100%);
+  background: linear-gradient(135deg, #b8962e 0%, #d4a832 50%, #b8962e 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -41,17 +48,18 @@ body {
 /* ══ Gold shimmer button ══ */
 .btn-gold {
   @apply relative overflow-hidden inline-flex items-center justify-center gap-2
-         px-6 py-3 rounded-lg font-bold text-dark-900 transition-all duration-300;
-  background: linear-gradient(135deg, #b8962e 0%, #f0d060 50%, #b8962e 100%);
+         px-6 py-3 rounded-lg font-bold transition-all duration-300;
+  background: linear-gradient(135deg, #b8962e 0%, #d4a832 50%, #b8962e 100%);
   background-size: 200% auto;
+  color: #1a1a1a;
 }
 .btn-gold:hover {
   background-position: right center;
-  box-shadow: 0 8px 25px rgba(184,150,46,0.5);
+  box-shadow: 0 8px 25px rgba(184,150,46,0.4);
   transform: translateY(-2px);
 }
 
-/* ══ Glass card ══ */
+/* ══ Glass card (للداشبورد فقط) ══ */
 .glass-card {
   background: rgba(255,255,255,0.04);
   backdrop-filter: blur(12px);
@@ -60,18 +68,38 @@ body {
   border-radius: 1rem;
 }
 
+/* ══ Light card (للصفحات العامة) ══ */
+.light-card {
+  background: #ffffff;
+  border: 1px solid #f0e8d0;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(184,150,46,0.08);
+  transition: all 0.3s ease;
+}
+.light-card:hover {
+  border-color: #b8962e;
+  box-shadow: 0 8px 30px rgba(184,150,46,0.15);
+  transform: translateY(-2px);
+}
+
 /* ══ Section padding ══ */
 .section-pad { @apply py-16 md:py-24 px-4 md:px-8 lg:px-16; }
 
 /* ══ Shimmer loading ══ */
 .shimmer {
   background: linear-gradient(90deg,
-    rgba(255,255,255,0.02) 0%,
-    rgba(184,150,46,0.1)  50%,
-    rgba(255,255,255,0.02) 100%);
+    rgba(255,255,255,0.5) 0%,
+    rgba(184,150,46,0.15) 50%,
+    rgba(255,255,255,0.5) 100%);
   background-size: 1000px 100%;
   animation: shimmer 2.5s linear infinite;
 }
+
+/* ══ Prose custom (blog content) ══ */
+.prose-custom h2 { @apply text-xl font-bold text-slate-800 mt-6 mb-3; }
+.prose-custom p  { @apply text-slate-600 leading-relaxed mb-3; }
+.prose-custom ul { @apply list-disc list-inside text-slate-600 mb-3 space-y-1; }
+.prose-custom a  { @apply text-amber-700 hover:text-amber-600 underline; }
 
 /* ══ Page transition ══ */
 .page-enter { opacity: 0; transform: translateY(20px); }

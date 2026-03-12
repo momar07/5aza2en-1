@@ -7,7 +7,7 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import { SITE, waLink } from "@/config/site";
 import {
   Shield, Ruler, Star, Clock, Phone, ChevronLeft,
-  Award, Users, Home as HomeIcon, CheckCircle2, Sparkles
+  Award, Users, CheckCircle2, Sparkles, Tag
 } from "lucide-react";
 
 const HERO_IMAGE =
@@ -20,21 +20,23 @@ function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-      {/* ── 1. صورة الخلفية ── */}
+      {/* ── خلفية الصورة ── */}
       <div className="absolute inset-0 z-0">
         <img
           src={HERO_IMAGE}
           alt="خزانة ملابس فاخرة"
           className="w-full h-full object-cover object-center"
           loading="eager"
+          fetchpriority="high"
         />
+        {/* تدرجات الخلفية */}
         <div className="absolute inset-0 bg-gradient-to-l
           from-slate-900/95 via-slate-900/75 to-slate-900/40" />
         <div className="absolute inset-0 bg-gradient-to-t
-          from-amber-950/60 via-transparent to-slate-900/50" />
+          from-slate-900/80 via-transparent to-slate-900/50" />
       </div>
 
-      {/* ── 2. حلقات متحركة ── */}
+      {/* ── حلقات متحركة ── */}
       {[...Array(4)].map((_, i) => (
         <motion.div
           key={i}
@@ -45,7 +47,7 @@ function HeroSection() {
         />
       ))}
 
-      {/* ── 3. المحتوى ── */}
+      {/* ── المحتوى ── */}
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
 
         <motion.div
@@ -120,7 +122,7 @@ function HeroSection() {
           </Link>
         </motion.div>
 
-        {/* إحصائيات داخل الهيرو */}
+        {/* إحصائيات */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -128,10 +130,10 @@ function HeroSection() {
           className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto"
         >
           {[
-            { value: "10+",   label: "سنوات خبرة"  },
-            { value: "+5000", label: "عميل راضٍ"    },
-            { value: "+8000", label: "مشروع منجز"   },
-            { value: "10",    label: "سنوات ضمان"   },
+            { value: "10+",   label: "سنوات خبرة" },
+            { value: "+5000", label: "عميل راضٍ"   },
+            { value: "+8000", label: "مشروع منجز"  },
+            { value: "10",    label: "سنوات ضمان"  },
           ].map((s, i) => (
             <div key={i}
               className="bg-white/10 backdrop-blur-sm border border-white/20
@@ -144,9 +146,9 @@ function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Fade سفلي */}
+      {/* ✅ fade سفلي إلى لون الخلفية الحقيقي (#f8f7f4) لا أبيض */}
       <div className="absolute bottom-0 left-0 right-0 h-32
-        bg-gradient-to-t from-white via-white/60 to-transparent z-10" />
+        bg-gradient-to-t from-[#f8f7f4] via-[#f8f7f4]/60 to-transparent z-10" />
 
       {/* Scroll indicator */}
       <motion.div
@@ -167,16 +169,16 @@ function HeroSection() {
 // ══════════════════════════════════════════════════════
 function CategoriesSection() {
   const categories = [
-    { title: "خزائن بأبواب منزلقة",  subtitle: "Sliding Door Wardrobes",  icon: "🚪", desc: "توفر مساحة أكبر في الغرفة مع أناقة عصرية",    slug: "sliding" },
-    { title: "خزائن بأبواب مفصلية",  subtitle: "Hinged Door Wardrobes",   icon: "🪞", desc: "التصميم الكلاسيكي بلمسة فاخرة ومتينة",        slug: "hinged"  },
-    { title: "غرف الملابس الكاملة",   subtitle: "Walk-in Closets",         icon: "✨", desc: "غرفة ملابسك المثالية بتصميم احترافي",         slug: "walkin"  },
-    { title: "خزائن مكشوفة",          subtitle: "Open Closets",            icon: "📦", desc: "تصميم مفتوح عصري وسهل الوصول",               slug: "open"    },
-    { title: "مكتبات الكتب",          subtitle: "Bookshelves & Libraries",  icon: "📚", desc: "مكتبات خشبية أنيقة لمنزلك ومكتبك",          slug: "library" },
-    { title: "خزائن الأطفال",         subtitle: "Kids Wardrobes",          icon: "🎨", desc: "تصاميم مبهجة وآمنة لغرف أطفالك",            slug: "kids"    },
+    { title: "خزائن بأبواب منزلقة", subtitle: "Sliding Door Wardrobes", icon: "🚪", desc: "توفر مساحة أكبر في الغرفة مع أناقة عصرية",  slug: "sliding" },
+    { title: "خزائن بأبواب مفصلية", subtitle: "Hinged Door Wardrobes",  icon: "🪞", desc: "التصميم الكلاسيكي بلمسة فاخرة ومتينة",      slug: "hinged"  },
+    { title: "غرف الملابس الكاملة",  subtitle: "Walk-in Closets",        icon: "✨", desc: "غرفة ملابسك المثالية بتصميم احترافي",       slug: "walkin"  },
+    { title: "خزائن مكشوفة",         subtitle: "Open Closets",           icon: "📦", desc: "تصميم مفتوح عصري وسهل الوصول",             slug: "open"    },
+    { title: "مكتبات الكتب",         subtitle: "Bookshelves & Libraries", icon: "📚", desc: "مكتبات خشبية أنيقة لمنزلك ومكتبك",        slug: "library" },
+    { title: "خزائن الأطفال",        subtitle: "Kids Wardrobes",         icon: "🎨", desc: "تصاميم مبهجة وآمنة لغرف أطفالك",          slug: "kids"    },
   ];
 
   return (
-    <section className="py-20 bg-slate-50">
+    <section className="py-20 bg-[#f8f7f4]">
       <div className="max-w-7xl mx-auto px-4">
         <SectionTitle title="أنواع خزائننا" subtitle="تشكيلة متنوعة تناسب كل ذوق ومساحة" center />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
@@ -186,11 +188,11 @@ function CategoriesSection() {
               viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.08 }}
             >
               <Link to={`/products?category=${cat.slug}`}
-                className="group block p-7 bg-white rounded-2xl border border-slate-200
-                  hover:border-amber-400 hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group block p-7 bg-white rounded-2xl border border-amber-100
+                  hover:border-amber-400 hover:shadow-xl shadow-sm transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="text-5xl mb-4">{cat.icon}</div>
-                <h3 className="text-xl font-bold text-slate-800 mb-1 group-hover:text-amber-600 transition-colors">
+                <h3 className="text-xl font-bold text-slate-800 mb-1 group-hover:text-amber-700 transition-colors">
                   {cat.title}
                 </h3>
                 <p className="text-amber-600 text-sm font-medium mb-3">{cat.subtitle}</p>
@@ -214,12 +216,12 @@ function CategoriesSection() {
 // ══════════════════════════════════════════════════════
 function WhyUsSection() {
   const features = [
-    { icon: <Ruler        className="w-6 h-6" />, title: "قياس مجاني",     desc: "نزور منزلك ونأخذ القياسات الدقيقة مجاناً وبدون التزام"          },
-    { icon: <Star         className="w-6 h-6" />, title: "جودة عالمية",     desc: "نستخدم أجود الخامات والمواد المستوردة ذات الجودة العالمية"       },
-    { icon: <Shield       className="w-6 h-6" />, title: "ضمان 10 سنوات",  desc: "ضمان شامل على الهيكل والتشغيل لمدة 10 سنوات كاملة"             },
-    { icon: <Clock        className="w-6 h-6" />, title: "تسليم في الموعد",desc: "نلتزم بمواعيد التسليم المتفق عليها مع الحفاظ على الجودة"         },
-    { icon: <CheckCircle2 className="w-6 h-6" />, title: "تصميم مخصص",     desc: "كل خزانة مصممة خصيصاً لمساحتك واحتياجاتك وذوقك"                },
-    { icon: <Users        className="w-6 h-6" />, title: "فريق متخصص",     desc: "فريق من المصممين والحرفيين المتخصصين بخبرة تتجاوز 10 سنوات"     },
+    { icon: <Ruler        className="w-6 h-6" />, title: "قياس مجاني",    desc: "نزور منزلك ونأخذ القياسات الدقيقة مجاناً وبدون التزام"      },
+    { icon: <Star         className="w-6 h-6" />, title: "جودة عالمية",    desc: "نستخدم أجود الخامات والمواد المستوردة ذات الجودة العالمية"   },
+    { icon: <Shield       className="w-6 h-6" />, title: "ضمان 10 سنوات", desc: "ضمان شامل على الهيكل والتشغيل لمدة 10 سنوات كاملة"         },
+    { icon: <Clock        className="w-6 h-6" />, title: "تسليم في الموعد",desc: "نلتزم بمواعيد التسليم المتفق عليها مع الحفاظ على الجودة"   },
+    { icon: <CheckCircle2 className="w-6 h-6" />, title: "تصميم مخصص",    desc: "كل خزانة مصممة خصيصاً لمساحتك واحتياجاتك وذوقك"            },
+    { icon: <Users        className="w-6 h-6" />, title: "فريق متخصص",    desc: "فريق من المصممين والحرفيين المتخصصين بخبرة تتجاوز 10 سنوات" },
   ];
 
   return (
@@ -236,11 +238,12 @@ function WhyUsSection() {
               initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.07 }}
               className="flex gap-4 p-6 rounded-2xl
-                bg-gradient-to-br from-slate-50 to-amber-50
-                border border-amber-100 hover:shadow-md transition-all duration-300"
+                bg-gradient-to-br from-[#fdf9f0] to-[#fff8e8]
+                border border-amber-100 hover:border-amber-300
+                hover:shadow-md transition-all duration-300"
             >
-              <div className="flex-shrink-0 w-12 h-12 bg-amber-600 rounded-xl
-                flex items-center justify-center text-white">
+              <div className="flex-shrink-0 w-12 h-12 bg-amber-500 rounded-xl
+                flex items-center justify-center text-white shadow-sm">
                 {f.icon}
               </div>
               <div>
@@ -256,57 +259,140 @@ function WhyUsSection() {
 }
 
 // ══════════════════════════════════════════════════════
-// Featured Products Section
+// Featured Products Section  ✅ ثيم موحد فاخر
 // ══════════════════════════════════════════════════════
 function FeaturedProductsSection() {
   const { products } = useData();
-  const featured = products.filter(p => p.featured).slice(0, 3);
+  const featured = products.filter(p => p.featured || p.isFeatured).slice(0, 3);
   if (!featured.length) return null;
 
   return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4">
-        <SectionTitle title="أبرز منتجاتنا" subtitle="اكتشف مجموعتنا المميزة من خزائن الملابس الفاخرة" center light />
+    <section className="py-20 bg-gradient-to-br from-[#1a1410] via-[#1e1a0e] to-[#0f0d08]
+      relative overflow-hidden">
+
+      {/* خلفية زخرفية */}
+      <div className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `repeating-linear-gradient(
+            45deg, #b8962e 0px, #b8962e 1px,
+            transparent 0px, transparent 50%
+          )`,
+          backgroundSize: "40px 40px"
+        }}
+      />
+      {/* توهج ذهبي مركزي */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+        w-[600px] h-[600px] rounded-full
+        bg-amber-500/5 blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4">
+        <SectionTitle
+          title="أبرز منتجاتنا"
+          subtitle="اكتشف مجموعتنا المميزة من خزائن الملابس الفاخرة"
+          center light
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           {featured.map((product, i) => (
-            <AnimatedCard key={product.id} delay={i * 0.1} dark>
-              <div className="relative overflow-hidden rounded-2xl
-                bg-slate-800 border border-slate-700 group
-                hover:border-amber-500/50 transition-all duration-300">
-                <div className="h-52 bg-gradient-to-br from-slate-700 to-slate-600
-                  flex items-center justify-center">
-                  <span className="text-6xl">🪞</span>
-                </div>
-                {product.badge && (
-                  <span className={`absolute top-4 right-4
-                    ${product.badgeColor || "bg-amber-500"}
-                    text-white text-xs font-bold px-3 py-1 rounded-full`}>
-                    {product.badge}
-                  </span>
-                )}
-                <div className="p-5">
-                  <h3 className="text-white font-bold text-lg mb-2">{product.name}</h3>
-                  <p className="text-slate-400 text-sm mb-4 line-clamp-2">{product.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-amber-400 font-bold">{product.priceNote || product.price}</span>
-                    <a href={waLink(`أريد الاستفسار عن: ${product.name}`)}
-                      target="_blank" rel="noopener noreferrer"
-                      className="flex items-center gap-1 bg-green-500 hover:bg-green-600
-                        text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors"
-                    >
-                      <Phone className="w-3.5 h-3.5" />
-                      استفسار
-                    </a>
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.55, delay: i * 0.12, ease: "easeOut" }}
+              whileHover={{ y: -6 }}
+              className="group relative overflow-hidden rounded-2xl
+                bg-gradient-to-b from-[#2a2215] to-[#1a1410]
+                border border-amber-800/30
+                hover:border-amber-500/60
+                shadow-lg hover:shadow-amber-900/40
+                transition-all duration-400"
+            >
+              {/* صورة المنتج أو placeholder */}
+              <div className="relative h-56 overflow-hidden
+                bg-gradient-to-br from-[#2e2415] to-[#1a1008]">
+                {product.image && !product.image.startsWith("/assets") ? (
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover
+                      group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-3">
+                    <span className="text-7xl opacity-60">🪞</span>
+                    <span className="text-amber-700/60 text-xs font-medium">صورة قريباً</span>
                   </div>
-                </div>
+                )}
+                {/* تدرج سفلي على الصورة */}
+                <div className="absolute inset-x-0 bottom-0 h-16
+                  bg-gradient-to-t from-[#1a1410] to-transparent" />
               </div>
-            </AnimatedCard>
+
+              {/* شارة المنتج */}
+              {product.badge && (
+                <span className={`absolute top-4 right-4 z-10
+                  ${product.badgeColor || "bg-amber-500"}
+                  text-white text-xs font-bold px-3 py-1 rounded-full
+                  shadow-lg`}>
+                  {product.badge}
+                </span>
+              )}
+
+              {/* تفاصيل المنتج */}
+              <div className="p-5">
+                <h3 className="text-white font-bold text-lg mb-2 leading-snug">
+                  {product.name}
+                </h3>
+                <p className="text-amber-200/50 text-sm mb-4 line-clamp-2">
+                  {product.description}
+                </p>
+
+                {/* السعر + زر الاستفسار */}
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <span className="text-amber-400 font-black text-base">
+                      {product.priceNote || product.price}
+                    </span>
+                    {product.priceNote && (
+                      <p className="text-amber-700/60 text-xs mt-0.5">{product.price}</p>
+                    )}
+                  </div>
+                  <a
+                    href={waLink(`أريد الاستفسار عن: ${product.name}`)}
+                    target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-1.5
+                      bg-green-600 hover:bg-green-500 text-white
+                      px-4 py-2 rounded-xl text-sm font-semibold
+                      transition-all duration-300 hover:scale-105
+                      shadow-md shadow-green-900/30 shrink-0"
+                  >
+                    <Phone className="w-3.5 h-3.5" />
+                    استفسار
+                  </a>
+                </div>
+
+                {/* مزايا سريعة */}
+                {product.features?.slice(0, 2).map((feat, fi) => (
+                  <div key={fi}
+                    className="flex items-center gap-2 mt-2 text-xs text-amber-300/60">
+                    <div className="w-1 h-1 rounded-full bg-amber-500 shrink-0" />
+                    <span className="line-clamp-1">{feat}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
-        <div className="text-center mt-10">
+
+        <div className="text-center mt-12">
           <Link to="/products"
-            className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600
-              text-white px-8 py-3 rounded-2xl font-bold transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center gap-2
+              bg-amber-500 hover:bg-amber-400 text-slate-900
+              px-10 py-4 rounded-2xl font-black text-lg
+              transition-all duration-300 hover:scale-105
+              shadow-lg shadow-amber-900/30"
           >
             عرض جميع المنتجات <ChevronLeft className="w-5 h-5" />
           </Link>
@@ -321,11 +407,11 @@ function FeaturedProductsSection() {
 // ══════════════════════════════════════════════════════
 function AdsSection() {
   const { ads } = useData();
-  const activeAds = ads.filter(a => a.isActive).slice(0, 3);
+  const activeAds = ads.filter(a => a.isActive || a.active).slice(0, 3);
   if (!activeAds.length) return null;
 
   return (
-    <section className="py-20 bg-amber-50">
+    <section className="py-20 bg-[#fdf9f0]">
       <div className="max-w-7xl mx-auto px-4">
         <SectionTitle title="عروض وتخفيضات حصرية" subtitle="استفد من عروضنا المميزة لفترة محدودة" center />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -333,8 +419,10 @@ function AdsSection() {
             <motion.div key={ad.id}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}
+              whileHover={{ y: -4 }}
               className={`relative overflow-hidden rounded-3xl
-                bg-gradient-to-br ${ad.colorClass} p-7 text-white`}
+                bg-gradient-to-br ${ad.colorClass || "from-amber-600 to-amber-800"} p-7 text-white
+                shadow-lg transition-all duration-300`}
             >
               {ad.badge && (
                 <span className="absolute top-4 left-4 bg-white/20 backdrop-blur-sm
@@ -342,9 +430,18 @@ function AdsSection() {
                   {ad.badge}
                 </span>
               )}
-              <div className="text-4xl font-black mb-2 opacity-20 text-right">{ad.discountText}</div>
+              {ad.discountText && (
+                <div className="text-4xl font-black mb-2 opacity-20 text-right">
+                  {ad.discountText}
+                </div>
+              )}
               <h3 className="text-xl font-black mb-2">{ad.title}</h3>
               <p className="text-white/80 text-sm mb-5">{ad.subtitle}</p>
+              {ad.validUntil && (
+                <p className="text-white/60 text-xs mb-4 flex items-center gap-1">
+                  <Tag className="w-3 h-3" /> ساري حتى: {ad.validUntil}
+                </p>
+              )}
               <a href={ad.ctaLink} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-white/20 hover:bg-white/30
                   border border-white/40 text-white px-5 py-2.5 rounded-xl
@@ -365,8 +462,16 @@ function AdsSection() {
 // ══════════════════════════════════════════════════════
 function CTASection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-amber-600 to-amber-800 text-white text-center">
-      <div className="max-w-3xl mx-auto px-4">
+    <section className="py-20 bg-gradient-to-br from-amber-600 via-amber-700 to-amber-800
+      text-white text-center relative overflow-hidden">
+      {/* زخرفة خلفية */}
+      <div className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage: "radial-gradient(circle at 20% 50%, #fff 1px, transparent 1px), radial-gradient(circle at 80% 50%, #fff 1px, transparent 1px)",
+          backgroundSize: "60px 60px"
+        }}
+      />
+      <div className="relative max-w-3xl mx-auto px-4">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6 }}
         >
@@ -379,7 +484,8 @@ function CTASection() {
               target="_blank" rel="noopener noreferrer"
               className="flex items-center justify-center gap-3
                 bg-white text-amber-700 px-8 py-4 rounded-2xl
-                text-lg font-black hover:bg-amber-50 transition-all hover:scale-105"
+                text-lg font-black hover:bg-amber-50 transition-all hover:scale-105
+                shadow-lg"
             >
               <Phone className="w-6 h-6" /> تواصل عبر واتساب
             </a>
@@ -405,9 +511,9 @@ export default function Home() {
   return (
     <>
       <SEOHead
-        title={SITE.defaultMeta.title}
-        description={SITE.defaultMeta.description}
-        keywords={SITE.defaultMeta.keywords}
+        title={SITE.defaultMeta?.title || SITE.meta?.title}
+        description={SITE.defaultMeta?.description || SITE.meta?.description}
+        keywords={SITE.defaultMeta?.keywords || SITE.meta?.keywords}
         url="/"
       />
       <HeroSection />
