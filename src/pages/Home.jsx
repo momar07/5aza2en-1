@@ -225,8 +225,11 @@ function WhyUsSection() {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-20 bg-[#f8f7f4] relative">
+      {/* fade علوي يربطها بالقسم الداكن قبلها */}
+      <div className="absolute top-0 left-0 right-0 h-16
+        bg-gradient-to-b from-[#1a1410] to-[#f8f7f4] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 relative">
         <SectionTitle
           title="لماذا تختار خبراء الخزائن؟"
           subtitle="نقدم أكثر من مجرد خزانة ملابس — نقدم تجربة متكاملة"
@@ -518,8 +521,8 @@ export default function Home() {
       />
       <HeroSection />
       <CategoriesSection />
-      <WhyUsSection />
       <FeaturedProductsSection />
+      <WhyUsSection />
       <AdsSection />
       <CTASection />
     </>
