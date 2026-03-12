@@ -203,7 +203,19 @@ function ProductCard({ product, onDetails }) {
     >
       {/* Image area */}
       <div className="relative h-52 bg-gradient-to-br from-slate-800 to-slate-700 overflow-hidden flex items-center justify-center">
-        <span className="text-7xl opacity-80 group-hover:scale-110 transition-transform duration-500">
+        {product.image && product.image.trim() !== "" ? (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+            onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }}
+          />
+        ) : null}
+        <span
+          className="text-7xl opacity-80 group-hover:scale-110 transition-transform duration-500"
+          style={{ display: product.image && product.image.trim() !== "" ? "none" : "block" }}
+        >
           {product.category_slug === "sliding" ? "🚪"
             : product.category_slug === "hinged" ? "🪞"
             : product.category_slug === "walkin" ? "✨"
@@ -294,8 +306,19 @@ function ProductModal({ product, onClose }) {
         onClick={e => e.stopPropagation()}
       >
         {/* Modal header */}
-        <div className="relative h-48 bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center">
-          <span className="text-8xl">
+        <div className="relative h-48 bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center overflow-hidden">
+          {product.image && product.image.trim() !== "" ? (
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-full object-cover"
+              onError={e => { e.target.style.display = "none"; e.target.nextSibling.style.display = "block"; }}
+            />
+          ) : null}
+          <span
+            className="text-8xl"
+            style={{ display: product.image && product.image.trim() !== "" ? "none" : "block" }}
+          >
             {product.category_slug === "sliding" ? "🚪"
               : product.category_slug === "hinged" ? "🪞"
               : product.category_slug === "walkin" ? "✨"
