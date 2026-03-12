@@ -465,38 +465,45 @@ function AdsSection() {
 // ══════════════════════════════════════════════════════
 function CTASection() {
   return (
-    <section className="py-20 bg-gradient-to-br from-amber-600 via-amber-700 to-amber-800
-      text-white text-center relative overflow-hidden">
-      {/* زخرفة خلفية */}
-      <div className="absolute inset-0 opacity-10"
+    <section className="py-20 bg-[#f8f7f4] text-center relative overflow-hidden">
+      {/* زخرفة خلفية - نقاط ذهبية خفيفة */}
+      <div className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: "radial-gradient(circle at 20% 50%, #fff 1px, transparent 1px), radial-gradient(circle at 80% 50%, #fff 1px, transparent 1px)",
-          backgroundSize: "60px 60px"
+          backgroundImage: "radial-gradient(circle, #b8962e 1px, transparent 1px)",
+          backgroundSize: "40px 40px"
         }}
       />
       <div className="relative max-w-3xl mx-auto px-4">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl font-black mb-4">هل أنت جاهز لتصميم خزانتك المثالية؟</h2>
-          <p className="text-amber-100 text-lg mb-8">
+          {/* أيقونة زخرفية */}
+          <div className="inline-flex items-center justify-center w-16 h-16
+            bg-amber-500 rounded-2xl mb-6 shadow-lg shadow-amber-200">
+            <Phone className="w-7 h-7 text-white" />
+          </div>
+          <h2 className="text-4xl font-black mb-4 text-slate-800">
+            هل أنت جاهز لتصميم خزانتك المثالية؟
+          </h2>
+          <p className="text-slate-500 text-lg mb-10">
             تواصل معنا الآن للحصول على استشارة مجانية وقياس مجاني في منزلك
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={waLink("أريد استشارة مجانية لتصميم خزانة ملابس")}
               target="_blank" rel="noopener noreferrer"
               className="flex items-center justify-center gap-3
-                bg-white text-amber-700 px-8 py-4 rounded-2xl
-                text-lg font-black hover:bg-amber-50 transition-all hover:scale-105
-                shadow-lg"
+                bg-green-500 hover:bg-green-600 text-white
+                px-8 py-4 rounded-2xl text-lg font-black
+                transition-all hover:scale-105 shadow-lg shadow-green-200"
             >
               <Phone className="w-6 h-6" /> تواصل عبر واتساب
             </a>
             <Link to="/contact"
               className="flex items-center justify-center gap-2
-                bg-amber-700/50 border-2 border-white/50 text-white
+                bg-white border-2 border-amber-300 text-amber-700
                 px-8 py-4 rounded-2xl text-lg font-bold
-                hover:bg-amber-700/70 transition-all hover:scale-105"
+                hover:bg-amber-50 hover:border-amber-400
+                transition-all hover:scale-105 shadow-sm"
             >
               صفحة التواصل <ChevronLeft className="w-5 h-5" />
             </Link>

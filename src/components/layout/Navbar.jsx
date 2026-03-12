@@ -20,7 +20,7 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -37,9 +37,9 @@ export default function Navbar() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 right-0 left-0 z-50 transition-colors duration-500 will-change-[background-color,box-shadow] ${
         scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-amber-100"
+          ? "bg-white/95 backdrop-blur-md shadow-md"
           : "bg-transparent"
       }`}
     >
